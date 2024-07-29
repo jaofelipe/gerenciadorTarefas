@@ -12,8 +12,8 @@ Para parar rodar o comando:
 docker-compose down
 ```
 
-Ambientes:
-Localmente: http://localhost:5000
+#### Ambientes:
+Local: http://localhost:5000
 
 Docker: http://localhost:8080
 
