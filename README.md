@@ -18,12 +18,12 @@ Docker: http://localhost:8080
 
 ## Migrations configurado com usuario e role Admin:
 
-user: admin@gmail.com
+### user: admin@gmail.com
 
-senha: Net@123
+### senha: Net@123
 
-Arquivo endpoints.josn para importar no Insomnia/Postman.
- Estão configurados os ambientes no arquivo json com os endpoints com variáveis de ambiente.
+Arquivo ```bash endpoints.json ``` para importar no Insomnia/Postman,
+ estão configurados os ambientes no arquivo json com os endpoints com variáveis de ambiente.
 
 
 
