@@ -14,6 +14,7 @@ docker-compose down
 
 Ambientes:
 Localmente: http://localhost:5000
+
 Docker: http://localhost:8080
 
 ## Migrations configurado com usuario e role Admin:
