@@ -1,21 +1,29 @@
 # Gerenciador de Tarefas
 
-Como configurar e rodar o projeto
+## Como configurar e rodar o projeto
 
-Entrar na pasta do projeto e executar: docker-compose -up --build
-Para parar rodar o comando: docker-compose down
+Entrar na pasta do projeto e executar: 
+```bash
+docker-compose -up --build
+```
+
+Para parar rodar o comando: 
+```bash
+docker-compose down
+```
 
 Ambientes:
 Localmente: http://localhost:5000
 Docker: http://localhost:8080
 
-Migrations configurado com usuario e role Admin:
+## Migrations configurado com usuario e role Admin:
 
 user: admin@gmail.com
+
 senha: Net@123
 
-Arquivo endpoints.josn para importar no Insomnia/Postman 
-Estão configurados os ambientes no arquivo json com os endpoints com variáveis de ambiente.
+Arquivo endpoints.josn para importar no Insomnia/Postman.
+ Estão configurados os ambientes no arquivo json com os endpoints com variáveis de ambiente.
 
 
 
