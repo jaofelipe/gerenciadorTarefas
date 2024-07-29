@@ -1,0 +1,15 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["GerenciadorTarefas.csproj", "./"]
+RUN dotnet restore "./GerenciadorTarefas.csproj"
+COPY . .
+WORKDIR "/src"
+RUN dotnet build "GerenciadorTarefas.csproj" -c Release -o /app/build
+RUN dotnet publish "GerenciadorTarefas.csproj" -c Release -o /app/publish
+
+FROM build AS migration
+WORKDIR /app
+COPY --from=build /app/publish .
+RUN dotnet tool install --global dotnet-ef --version 7.0.20
+ENV PATH="$PATH:/root/.dotnet/tools"
+ENTRYPOINT ["sh", "-c", "sleep 30 && dotnet-ef database update --context DataContext --project /src/GerenciadorTarefas.csproj"]

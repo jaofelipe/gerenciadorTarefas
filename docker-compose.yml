@@ -1,0 +1,51 @@
+services:
+  sqlserver:
+    container_name: tarefas-sqlserver
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "cnx0310CNX"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -U sa -P cnx0310CNX -Q 'SELECT 1'"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+    networks:
+      - backend
+
+  migrations:
+    container_name: tarefas-migrations
+    build:
+      context: .
+      dockerfile: Dockerfile.migrations
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=gerenciador;User ID=sa;Password=cnx0310CNX;TrustServerCertificate=True;
+    networks:
+      - backend
+
+  app:
+    container_name: tarefas-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=gerenciador;User ID=sa;Password=cnx0310CNX;TrustServerCertificate=True;
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      migrations:
+        condition: service_started
+    networks:
+      - backend
+
+networks:
+    backend:
