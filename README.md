@@ -4,7 +4,7 @@
 
 Entrar na pasta do projeto e executar: 
 ```bash
-docker-compose -up --build
+docker-compose up --build
 ```
 
 Para parar rodar o comando: 
@@ -24,7 +24,7 @@ Docker: http://localhost:8080
 #### senha: Net@123
 
 Arquivo ```RestAPI/endpoints.json ``` para importar no Insomnia/Postman,
- est„o configurados os ambientes no arquivo json com os endpoints com vari·veis de ambiente.
+ est√£o configurados os ambientes no arquivo json com os endpoints com vari√°veis de ambiente.
 
 
 
